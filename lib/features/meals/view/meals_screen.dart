@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
 
 class MealsScreen extends StatelessWidget {
-  const MealsScreen({super.key});
+  const MealsScreen({
+    super.key,
+    required this.categoryId,
+    required this.categoryTitle,
+  });
+
+  final String categoryId;
+  final String categoryTitle;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Meals',
-          style: TextStyle(
+        title: Text(
+          categoryTitle,
+          style: const TextStyle(
             fontSize: 28,
             fontFamily: 'RobotoCondensed',
             fontWeight: FontWeight.bold,
