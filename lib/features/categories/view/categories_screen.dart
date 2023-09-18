@@ -20,8 +20,18 @@ class CategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('DeliMeals')),
+      appBar: AppBar(
+        title: const Text(
+          'Deli Meals',
+          style: TextStyle(
+            fontSize: 28,
+            fontFamily: 'RobotoCondensed',
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
       body: GridView(
+        padding: const EdgeInsets.all(25),
         gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 200,
           childAspectRatio: 3 / 2,
