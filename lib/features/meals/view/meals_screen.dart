@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../data/data.dart';
+
 class MealsScreen extends StatelessWidget {
   const MealsScreen({
     super.key,
@@ -13,6 +15,8 @@ class MealsScreen extends StatelessWidget {
     final String id = routeArgs['id'];
     final String title = routeArgs['title'];
     final Color color = routeArgs['color'];
+    final categoryMeals =
+        dummyMeals.where((element) => element.categories.contains(id)).toList();
 
     return Scaffold(
       backgroundColor: color,
@@ -28,9 +32,11 @@ class MealsScreen extends StatelessWidget {
       ),
       body: Container(
         padding: const EdgeInsets.all(15),
-        child: Text(
-          id,
-          style: Theme.of(context).textTheme.titleLarge,
+        child: ListView.builder(
+          itemBuilder: (context, index) {
+            return Text(categoryMeals[index].title);
+          },
+          itemCount: categoryMeals.length,
         ),
       ),
     );
