@@ -74,6 +74,40 @@ class MealItem extends StatelessWidget {
                 )
               ],
             ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Row(
+                      children: [
+                        const Icon(Icons.schedule),
+                        const SizedBox(
+                          width: 6,
+                        ),
+                        Text('$duration nim')
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        const Icon(Icons.psychology_outlined),
+                        const SizedBox(
+                          width: 6,
+                        ),
+                        Text(complexity.name)
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        const Icon(Icons.savings_outlined),
+                        const SizedBox(
+                          width: 6,
+                        ),
+                        Text(affordability.name)
+                      ],
+                    )
+                  ]),
+            )
           ],
         ),
       ),
