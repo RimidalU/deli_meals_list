@@ -15,25 +15,32 @@ class MealDetailsScreen extends StatelessWidget {
         ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
     final String id = routeArgs['id'];
     final mealDetails = dummyMeals.firstWhere((element) => element.id == id);
+    final mediaQuery = MediaQuery.of(context);
+
+    final appBar = AppBar(
+      title: Text(
+        mealDetails.title,
+        style: const TextStyle(
+          fontSize: 22,
+          fontFamily: 'RobotoCondensed',
+          fontWeight: FontWeight.bold,
+        ),
+        softWrap: true,
+        overflow: TextOverflow.fade,
+      ),
+    );
+
+    final bodyHeight = mediaQuery.size.height -
+        appBar.preferredSize.height -
+        mediaQuery.padding.top;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          mealDetails.title,
-          style: const TextStyle(
-            fontSize: 22,
-            fontFamily: 'RobotoCondensed',
-            fontWeight: FontWeight.bold,
-          ),
-          softWrap: true,
-          overflow: TextOverflow.fade,
-        ),
-      ),
+      appBar: appBar,
       body: SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(
-              height: 200,
+              height: bodyHeight * 0.25,
               width: double.infinity,
               child: Image.network(
                 mealDetails.imageUrl,
@@ -42,6 +49,8 @@ class MealDetailsScreen extends StatelessWidget {
             ),
             const SectionTitle(title: 'Ingredients:'),
             ListContainer(
+              mediaQuery: mediaQuery,
+              bodyHeight: bodyHeight,
               child: ListView.builder(
                 itemBuilder: (context, index) {
                   return Card(
@@ -61,6 +70,8 @@ class MealDetailsScreen extends StatelessWidget {
             ),
             const SectionTitle(title: 'Steps to Cooking:'),
             ListContainer(
+              mediaQuery: mediaQuery,
+              bodyHeight: bodyHeight,
               child: ListView.builder(
                 itemBuilder: (context, index) {
                   return Column(

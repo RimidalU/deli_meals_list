@@ -4,15 +4,19 @@ class ListContainer extends StatelessWidget {
   const ListContainer({
     super.key,
     required this.child,
+    required this.bodyHeight,
+    required this.mediaQuery,
   });
 
   final Widget child;
+  final double bodyHeight;
+  final MediaQueryData mediaQuery;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
-      width: 350,
+      height: bodyHeight * 0.27,
+      width: mediaQuery.size.width * 0.9,
       decoration: BoxDecoration(
           // color: Colors.amber,
           border: Border.all(
