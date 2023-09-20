@@ -16,14 +16,20 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'DeliMeals',
       theme: ThemeData(
-        primaryColor: Colors.deepPurple,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.white10,
-        ),
-        scaffoldBackgroundColor: Colors.grey.shade200,
-        useMaterial3: true,
-        fontFamily: 'Raleway',
-      ),
+          primaryColor: Colors.deepPurple,
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.white10,
+          ),
+          scaffoldBackgroundColor: Colors.grey.shade200,
+          useMaterial3: true,
+          fontFamily: 'Raleway',
+          textTheme: const TextTheme(
+            labelMedium: TextStyle(
+              fontSize: 24,
+              fontFamily: 'RobotoCondensed',
+              fontWeight: FontWeight.bold,
+            ),
+          )),
       initialRoute: CategoriesScreen.routeName,
       routes: {
         CategoriesScreen.routeName: (context) => const CategoriesScreen(),
