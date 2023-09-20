@@ -1,3 +1,4 @@
+import 'package:deli_meals_list/features/meal_details/widgets/list_container.dart';
 import 'package:deli_meals_list/features/meal_details/widgets/section_title.dart';
 import 'package:flutter/material.dart';
 
@@ -28,29 +29,20 @@ class MealDetailsScreen extends StatelessWidget {
           overflow: TextOverflow.fade,
         ),
       ),
-      body: Column(
-        children: [
-          SizedBox(
-            height: 300,
-            width: double.infinity,
-            child: Image.network(
-              mealDetails.imageUrl,
-              fit: BoxFit.cover,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 200,
+              width: double.infinity,
+              child: Image.network(
+                mealDetails.imageUrl,
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          const SectionTitle(title: 'Ingredients:'),
-          Container(
-            height: 200,
-            width: 350,
-            decoration: BoxDecoration(
-                // color: Colors.amber,
-                border: Border.all(
-                  color: Colors.grey,
-                ),
-                borderRadius: BorderRadius.circular(10)),
-            margin: const EdgeInsets.all(10),
-            padding: const EdgeInsets.all(10),
-            child: ListView.builder(
+            const SectionTitle(title: 'Ingredients:'),
+            ListContainer(
+              child: ListView.builder(
                 itemBuilder: (context, index) {
                   return Card(
                     child: Padding(
@@ -64,10 +56,30 @@ class MealDetailsScreen extends StatelessWidget {
                     ),
                   );
                 },
-                itemCount: mealDetails.ingredients.length),
-          ),
-          const SectionTitle(title: 'Steps to Cooking:'),
-        ],
+                itemCount: mealDetails.ingredients.length,
+              ),
+            ),
+            const SectionTitle(title: 'Steps to Cooking:'),
+            ListContainer(
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [
+                      ListTile(
+                        leading: CircleAvatar(
+                          child: Text('# ${index + 1}'),
+                        ),
+                        title: Text(mealDetails.steps[index]),
+                      ),
+                      const Divider()
+                    ],
+                  );
+                },
+                itemCount: mealDetails.steps.length,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
