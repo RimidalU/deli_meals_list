@@ -1,3 +1,4 @@
+import 'package:deli_meals_list/features/meal_details/widgets/section_title.dart';
 import 'package:flutter/material.dart';
 
 import '/features/meals/data/dummy_meals.dart';
@@ -37,13 +38,7 @@ class MealDetailsScreen extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 10),
-            child: Text(
-              'Ingredients',
-              style: Theme.of(context).textTheme.labelMedium,
-            ),
-          ),
+          const SectionTitle(title: 'Ingredients:'),
           Container(
             height: 200,
             width: 350,
@@ -70,7 +65,8 @@ class MealDetailsScreen extends StatelessWidget {
                   );
                 },
                 itemCount: mealDetails.ingredients.length),
-          )
+          ),
+          const SectionTitle(title: 'Steps to Cooking:'),
         ],
       ),
     );
