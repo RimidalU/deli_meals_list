@@ -19,33 +19,20 @@ class MealsScreen extends StatelessWidget {
     final categoryMeals =
         dummyMeals.where((element) => element.categories.contains(id)).toList();
 
-    return Scaffold(
-      backgroundColor: color,
-      appBar: AppBar(
-        title: Text(
-          title,
-          style: const TextStyle(
-            fontSize: 28,
-            fontFamily: 'RobotoCondensed',
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-      body: Container(
-        padding: const EdgeInsets.all(15),
-        child: ListView.builder(
-          itemBuilder: (context, index) {
-            return MealItem(
-              affordability: categoryMeals[index].affordability,
-              complexity: categoryMeals[index].complexity,
-              duration: categoryMeals[index].duration,
-              imageUrl: categoryMeals[index].imageUrl,
-              title: categoryMeals[index].title,
-              id: categoryMeals[index].id,
-            );
-          },
-          itemCount: categoryMeals.length,
-        ),
+    return Container(
+      padding: const EdgeInsets.all(15),
+      child: ListView.builder(
+        itemBuilder: (context, index) {
+          return MealItem(
+            affordability: categoryMeals[index].affordability,
+            complexity: categoryMeals[index].complexity,
+            duration: categoryMeals[index].duration,
+            imageUrl: categoryMeals[index].imageUrl,
+            title: categoryMeals[index].title,
+            id: categoryMeals[index].id,
+          );
+        },
+        itemCount: categoryMeals.length,
       ),
     );
   }

@@ -45,9 +45,19 @@ class _BottomTabsScreenState extends State<BottomTabsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final routeArgs =
+        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('DeliMeals'),
+        title: Text(
+          routeArgs['title'] as String,
+          style: const TextStyle(
+            fontSize: 28,
+            fontFamily: 'RobotoCondensed',
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: tabs[selectedPage]['view'] as Widget,
       bottomNavigationBar: BottomNavigationBar(
