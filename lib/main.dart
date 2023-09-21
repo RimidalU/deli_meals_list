@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'features/bottom_tabs/view/bottom_tabs_screen.dart';
 import 'features/categories/categories.dart';
 import 'features/favorites/favorites.dart';
+import 'features/filters/filters.dart';
 import 'features/meal_details/meal_details.dart';
 import 'features/meals/meals.dart';
 import 'features/tabs/tabs.dart';
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
         MealsScreen.routeName: (context) => const BottomTabsScreen(),
         MealDetailsScreen.routeName: (context) => const MealDetailsScreen(),
         FavoritesScreen.routeName: (context) => const FavoritesScreen(),
+        FiltersScreen.routeName: (context) => const FiltersScreen(),
       },
       onUnknownRoute: (settings) => MaterialPageRoute(
         builder: (context) => const CategoriesScreen(),
