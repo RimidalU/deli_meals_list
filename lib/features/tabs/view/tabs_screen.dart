@@ -10,7 +10,7 @@ class TabsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: tabs.length,
-      initialIndex: 1,
+      initialIndex: 0,
       child: Scaffold(
         appBar: AppBar(
           title: const Text(
