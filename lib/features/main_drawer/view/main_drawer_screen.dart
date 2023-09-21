@@ -33,14 +33,15 @@ class MainDrawerScreen extends StatelessWidget {
             title: 'Meals',
             icon: Icons.restaurant,
             handleTap: () {
-              Navigator.of(context).pushNamed('/');
+              Navigator.of(context).pushReplacementNamed('/');
             },
           ),
           MenuItem(
             title: 'Filters',
             icon: Icons.settings,
             handleTap: () {
-              Navigator.of(context).pushNamed(FiltersScreen.routeName);
+              Navigator.of(context)
+                  .pushReplacementNamed(FiltersScreen.routeName);
             },
           ),
         ],
