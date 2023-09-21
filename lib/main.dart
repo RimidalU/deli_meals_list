@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'features/categories/categories.dart';
+import 'features/favorites/favorites.dart';
+import 'features/meal_details/meal_details.dart';
 import 'features/meals/meals.dart';
 import 'features/tabs/tabs.dart';
 
@@ -35,7 +37,8 @@ class MyApp extends StatelessWidget {
         '/': (context) => const TabsScreen(),
         CategoriesScreen.routeName: (context) => const CategoriesScreen(),
         MealsScreen.routeName: (context) => const MealsScreen(),
-        MealDetailsScreen.routeName: (context) => const MealDetailsScreen()
+        MealDetailsScreen.routeName: (context) => const MealDetailsScreen(),
+        FavoritesScreen.routeName: (context) => const FavoritesScreen(),
       },
       onUnknownRoute: (settings) => MaterialPageRoute(
         builder: (context) => const CategoriesScreen(),
