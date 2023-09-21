@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '/features/categories/categories.dart';
 import '/features/favorites/favorites.dart';
+import '/features/main_drawer/main_drawer.dart';
 
 class TabsScreen extends StatelessWidget {
   const TabsScreen({super.key});
@@ -29,6 +30,7 @@ class TabsScreen extends StatelessWidget {
             FavoritesScreen(),
           ],
         ),
+        drawer: const MainDrawerScreen(),
       ),
     );
   }
