@@ -8,7 +8,7 @@ class CategoriesScreen extends StatelessWidget {
     super.key,
   });
 
-  static const routeName = 'categories/';
+  static const routeName = '/categories';
 
   List<Widget> _getCategories() {
     return dummyCategories
