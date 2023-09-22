@@ -12,8 +12,28 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Filter filters = const Filter(
+    glutenFree: false,
+    lactoseFree: false,
+    vegan: false,
+    vegetarian: false,
+  );
+
+  void handleSetFilters(Filter filterData) {
+    setState(
+      () {
+        filters = filterData;
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +61,10 @@ class MyApp extends StatelessWidget {
         MealsScreen.routeName: (context) => const BottomTabsScreen(),
         MealDetailsScreen.routeName: (context) => const MealDetailsScreen(),
         FavoritesScreen.routeName: (context) => const FavoritesScreen(),
-        FiltersScreen.routeName: (context) => const FiltersScreen(),
+        FiltersScreen.routeName: (context) => FiltersScreen(
+              filters: filters,
+              handleSetFilters: handleSetFilters,
+            ),
       },
       onUnknownRoute: (settings) => MaterialPageRoute(
         builder: (context) => const CategoriesScreen(),
