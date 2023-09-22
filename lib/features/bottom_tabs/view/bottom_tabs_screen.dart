@@ -7,7 +7,7 @@ class BottomTabsScreen extends StatefulWidget {
   const BottomTabsScreen({super.key});
 
   @override
-  _BottomTabsScreenState createState() => _BottomTabsScreenState();
+  State<BottomTabsScreen> createState() => _BottomTabsScreenState();
 }
 
 final List<Map<String, Object>> tabs = [
