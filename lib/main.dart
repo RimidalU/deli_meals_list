@@ -35,6 +35,19 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
+  void handleResetFilters() {
+    setState(
+      () {
+        filters = const Filter(
+          glutenFree: false,
+          lactoseFree: false,
+          vegan: false,
+          vegetarian: false,
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -64,6 +77,7 @@ class _MyAppState extends State<MyApp> {
         FiltersScreen.routeName: (context) => FiltersScreen(
               filters: filters,
               handleSetFilters: handleSetFilters,
+              handleResetFilters: handleResetFilters,
             ),
       },
       onUnknownRoute: (settings) => MaterialPageRoute(

@@ -8,10 +8,12 @@ class FiltersScreen extends StatefulWidget {
   const FiltersScreen({
     super.key,
     required this.handleSetFilters,
+    required this.handleResetFilters,
     required this.filters,
   });
 
   final Function handleSetFilters;
+  final Function handleResetFilters;
   final Filter filters;
 
   static const routeName = '/filters';
@@ -39,6 +41,13 @@ class _FiltersScreenState extends State<FiltersScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          CloseButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed('/');
+            },
+          ),
+        ],
         title: const Text('Your Filters'),
       ),
       drawer: const MainDrawerScreen(),
@@ -106,6 +115,9 @@ class _FiltersScreenState extends State<FiltersScreen> {
                   height: 15,
                 ),
                 ElevatedButton(
+                  style: const ButtonStyle(
+                    elevation: MaterialStatePropertyAll(10),
+                  ),
                   onPressed: () {
                     final selectedFilters = Filter(
                       glutenFree: glutenFree,
@@ -118,6 +130,28 @@ class _FiltersScreenState extends State<FiltersScreen> {
                     Navigator.of(context).pushNamed('/');
                   },
                   child: const Text('Save Filters'),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                ElevatedButton(
+                  style: ButtonStyle(
+                      elevation: const MaterialStatePropertyAll(10),
+                      backgroundColor:
+                          MaterialStatePropertyAll(Colors.red.shade100)),
+                  onPressed: () {
+                    final selectedFilters = Filter(
+                      glutenFree: glutenFree,
+                      lactoseFree: lactoseFree,
+                      vegan: vegan,
+                      vegetarian: vegetarian,
+                    );
+
+                    widget.handleResetFilters();
+
+                    Navigator.of(context).pushNamed('/');
+                  },
+                  child: const Text('Remove All Filters And Exit'),
                 ),
               ],
             ),
