@@ -14,12 +14,12 @@ class MealsScreen extends StatelessWidget {
     final routeArgs =
         ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
     final String id = routeArgs['id'];
-    final String title = routeArgs['title'];
     final Color color = routeArgs['color'];
     final categoryMeals =
         dummyMeals.where((element) => element.categories.contains(id)).toList();
 
     return Container(
+      color: color.withAlpha(60),
       padding: const EdgeInsets.all(15),
       child: ListView.builder(
         itemBuilder: (context, index) {
