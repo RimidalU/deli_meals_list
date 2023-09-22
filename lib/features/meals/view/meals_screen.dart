@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../../../data/data.dart';
+import '../models/models.dart';
 import '../widgets/widgets.dart';
 
 class MealsScreen extends StatelessWidget {
-  const MealsScreen({
-    super.key,
-  });
+  const MealsScreen({super.key, required this.availableMeal});
+
+  final List<Meal> availableMeal;
+
   static const routeName = '/meals';
 
   @override
@@ -15,8 +16,9 @@ class MealsScreen extends StatelessWidget {
         ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
     final String id = routeArgs['id'];
     final Color color = routeArgs['color'];
-    final categoryMeals =
-        dummyMeals.where((element) => element.categories.contains(id)).toList();
+    final categoryMeals = availableMeal
+        .where((element) => element.categories.contains(id))
+        .toList();
 
     return Container(
       color: color.withAlpha(60),

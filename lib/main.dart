@@ -35,21 +35,33 @@ class _MyAppState extends State<MyApp> {
     setState(
       () {
         filters = filterData;
+
+        availableMeal = dummyMeals.where((meal) {
+          if (filters.glutenFree && !meal.isGlutenFree) {
+            return false;
+          }
+          if (filters.lactoseFree && !meal.isLactoseFree) {
+            return false;
+          }
+          if (filters.vegan && !meal.isVegan) {
+            return false;
+          }
+          if (filters.vegetarian && !meal.isVegetarian) {
+            return false;
+          }
+          return true;
+        }).toList();
       },
     );
   }
 
   void handleResetFilters() {
-    setState(
-      () {
-        filters = const Filter(
-          glutenFree: false,
-          lactoseFree: false,
-          vegan: false,
-          vegetarian: false,
-        );
-      },
-    );
+    handleSetFilters(const Filter(
+      glutenFree: false,
+      lactoseFree: false,
+      vegan: false,
+      vegetarian: false,
+    ));
   }
 
   @override
@@ -75,7 +87,8 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/': (context) => const TabsScreen(),
         CategoriesScreen.routeName: (context) => const CategoriesScreen(),
-        MealsScreen.routeName: (context) => const BottomTabsScreen(),
+        MealsScreen.routeName: (context) =>
+            BottomTabsScreen(availableMeal: availableMeal),
         MealDetailsScreen.routeName: (context) =>
             MealDetailsScreen(availableMeal: availableMeal),
         FavoritesScreen.routeName: (context) => const FavoritesScreen(),

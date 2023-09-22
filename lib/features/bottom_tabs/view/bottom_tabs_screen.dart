@@ -1,41 +1,52 @@
 import 'package:flutter/material.dart';
 
 import '../../../features/about_category/views/views.dart';
+import '../../../features/meals/models/models.dart';
 import '../../../features/meals/view/view.dart';
 
 class BottomTabsScreen extends StatefulWidget {
-  const BottomTabsScreen({super.key});
+  const BottomTabsScreen({super.key, required this.availableMeal});
+
+  final List<Meal> availableMeal;
 
   @override
   State<BottomTabsScreen> createState() => _BottomTabsScreenState();
 }
 
-final List<Map<String, Object>> tabs = [
-  {
-    'title': 'To Meals List',
-    'icon': Icons.ramen_dining_outlined,
-    'view': const MealsScreen()
-  },
-  {
-    'title': 'About',
-    'icon': Icons.info,
-    'view': const AboutCategoryScreen(),
-  },
-];
-
-List<BottomNavigationBarItem> getNavigationTabs() {
-  return tabs
-      .map(
-        (tab) => BottomNavigationBarItem(
-          icon: Icon(tab['icon'] as IconData),
-          label: tab['title'] as String,
-        ),
-      )
-      .toList();
-}
-
 class _BottomTabsScreenState extends State<BottomTabsScreen> {
   int selectedPage = 0;
+
+  late List<Meal> meals = [];
+
+  @override
+  void initState() {
+    meals = widget.availableMeal;
+    super.initState();
+  }
+
+  final List<Map<String, Object>> tabs = [
+    {
+      'title': 'To Meals List',
+      'icon': Icons.ramen_dining_outlined,
+      // 'view': MealsScreen( )
+    },
+    {
+      'title': 'About',
+      'icon': Icons.info,
+      // 'view': const AboutCategoryScreen(),
+    },
+  ];
+
+  List<BottomNavigationBarItem> getNavigationTabs() {
+    return tabs
+        .map(
+          (tab) => BottomNavigationBarItem(
+            icon: Icon(tab['icon'] as IconData),
+            label: tab['title'] as String,
+          ),
+        )
+        .toList();
+  }
 
   void handleChangePage(int index) {
     setState(() {
@@ -59,7 +70,10 @@ class _BottomTabsScreenState extends State<BottomTabsScreen> {
           ),
         ),
       ),
-      body: tabs[selectedPage]['view'] as Widget,
+      body: selectedPage == 0
+          ? MealsScreen(availableMeal: widget.availableMeal)
+          : const AboutCategoryScreen(),
+      // body: tabs[selectedPage]['view'] as Widget,
       bottomNavigationBar: BottomNavigationBar(
         onTap: handleChangePage,
         backgroundColor: Colors.grey.shade300,
