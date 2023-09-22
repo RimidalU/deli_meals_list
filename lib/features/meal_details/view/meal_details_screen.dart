@@ -1,12 +1,12 @@
-import 'package:deli_meals_list/features/meal_details/widgets/list_container.dart';
-import 'package:deli_meals_list/features/meal_details/widgets/section_title.dart';
 import 'package:flutter/material.dart';
 
-import '/features/meals/data/dummy_meals.dart';
+import '../../../features/meals/models/models.dart';
+import '../widgets/widgets.dart';
 
 class MealDetailsScreen extends StatelessWidget {
-  const MealDetailsScreen({super.key});
+  const MealDetailsScreen({super.key, required this.availableMeal});
 
+  final List<Meal> availableMeal;
   static const routeName = '/meals-details';
 
   @override
@@ -14,7 +14,7 @@ class MealDetailsScreen extends StatelessWidget {
     final routeArgs =
         ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
     final String id = routeArgs['id'];
-    final mealDetails = dummyMeals.firstWhere((element) => element.id == id);
+    final mealDetails = availableMeal.firstWhere((element) => element.id == id);
     final mediaQuery = MediaQuery.of(context);
 
     final appBar = AppBar(

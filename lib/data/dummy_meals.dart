@@ -1,4 +1,4 @@
-import '../models/models.dart';
+import '/features/meals/models/models.dart';
 
 const dummyMeals = [
   Meal(

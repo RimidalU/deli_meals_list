@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
+import '/data/data.dart';
 import 'features/bottom_tabs/view/bottom_tabs_screen.dart';
 import 'features/categories/categories.dart';
 import 'features/favorites/favorites.dart';
 import 'features/filters/filters.dart';
 import 'features/meal_details/meal_details.dart';
 import 'features/meals/meals.dart';
+import 'features/meals/models/models.dart';
 import 'features/tabs/tabs.dart';
 
 void main() {
@@ -26,6 +28,8 @@ class _MyAppState extends State<MyApp> {
     vegan: false,
     vegetarian: false,
   );
+
+  List<Meal> availableMeal = dummyMeals;
 
   void handleSetFilters(Filter filterData) {
     setState(
@@ -72,7 +76,8 @@ class _MyAppState extends State<MyApp> {
         '/': (context) => const TabsScreen(),
         CategoriesScreen.routeName: (context) => const CategoriesScreen(),
         MealsScreen.routeName: (context) => const BottomTabsScreen(),
-        MealDetailsScreen.routeName: (context) => const MealDetailsScreen(),
+        MealDetailsScreen.routeName: (context) =>
+            MealDetailsScreen(availableMeal: availableMeal),
         FavoritesScreen.routeName: (context) => const FavoritesScreen(),
         FiltersScreen.routeName: (context) => FiltersScreen(
               filters: filters,
