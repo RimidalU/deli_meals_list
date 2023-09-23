@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
-import '../data/data.dart';
+import '../models/models.dart';
 import '../widgets/widgets.dart';
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({
     super.key,
+    required this.dummyCategories,
   });
+
+  final List<Category> dummyCategories;
 
   static const routeName = '/categories';
 

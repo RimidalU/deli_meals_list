@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '/features/categories/categories.dart';
+import '/features/categories/models/models.dart';
 import '/features/favorites/favorites.dart';
 import '/features/main_drawer/main_drawer.dart';
 import '/features/meals/models/models.dart';
@@ -9,9 +10,12 @@ class TabsScreen extends StatelessWidget {
   const TabsScreen({
     super.key,
     required this.favoriteMeals,
+    required this.dummyCategories,
   });
 
   final List<Meal> favoriteMeals;
+  final List<Category> dummyCategories;
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -31,7 +35,7 @@ class TabsScreen extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            const CategoriesScreen(),
+            CategoriesScreen(dummyCategories: dummyCategories),
             FavoritesScreen(favoriteMeals: favoriteMeals),
           ],
         ),

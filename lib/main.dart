@@ -103,8 +103,10 @@ class _MyAppState extends State<MyApp> {
           )),
       // initialRoute: CategoriesScreen.routeName,
       routes: {
-        '/': (context) => TabsScreen(favoriteMeals: favoriteMeals),
-        CategoriesScreen.routeName: (context) => const CategoriesScreen(),
+        '/': (context) => TabsScreen(
+            favoriteMeals: favoriteMeals, dummyCategories: dummyCategories),
+        CategoriesScreen.routeName: (context) =>
+            const CategoriesScreen(dummyCategories: dummyCategories),
         MealsScreen.routeName: (context) =>
             BottomTabsScreen(availableMeal: availableMeal),
         MealDetailsScreen.routeName: (context) => MealDetailsScreen(
@@ -119,7 +121,8 @@ class _MyAppState extends State<MyApp> {
             ),
       },
       onUnknownRoute: (settings) => MaterialPageRoute(
-        builder: (context) => const CategoriesScreen(),
+        builder: (context) =>
+            const CategoriesScreen(dummyCategories: dummyCategories),
       ),
     );
   }
