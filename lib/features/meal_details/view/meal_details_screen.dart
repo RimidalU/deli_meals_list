@@ -7,11 +7,13 @@ class MealDetailsScreen extends StatelessWidget {
   const MealDetailsScreen({
     super.key,
     required this.availableMeal,
+    required this.isFavorites,
     required this.handleToggleFavorites,
   });
 
   final List<Meal> availableMeal;
   final Function handleToggleFavorites;
+  final Function isFavorites;
   static const routeName = '/meals-details';
 
   @override
@@ -98,8 +100,9 @@ class MealDetailsScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-          onPressed: () => handleToggleFavorites(id),
-          child: const Icon(Icons.favorite)),
+        onPressed: () => handleToggleFavorites(id),
+        child: Icon(isFavorites(id) ? Icons.favorite : Icons.favorite_outline),
+      ),
     );
   }
 }
