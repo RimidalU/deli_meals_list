@@ -16,26 +16,25 @@ class BottomTabsScreen extends StatefulWidget {
 class _BottomTabsScreenState extends State<BottomTabsScreen> {
   int selectedPage = 0;
 
-  late List<Meal> meals = [];
+  late List<Map<String, Object>> tabs;
 
   @override
   void initState() {
-    meals = widget.availableMeal;
+    tabs = [
+      {
+        'title': 'To Meals List',
+        'icon': Icons.ramen_dining_outlined,
+        'view': MealsScreen(availableMeal: widget.availableMeal)
+      },
+      {
+        'title': 'About',
+        'icon': Icons.info,
+        'view': const AboutCategoryScreen(),
+      },
+    ];
+
     super.initState();
   }
-
-  final List<Map<String, Object>> tabs = [
-    {
-      'title': 'To Meals List',
-      'icon': Icons.ramen_dining_outlined,
-      // 'view': MealsScreen( )
-    },
-    {
-      'title': 'About',
-      'icon': Icons.info,
-      // 'view': const AboutCategoryScreen(),
-    },
-  ];
 
   List<BottomNavigationBarItem> getNavigationTabs() {
     return tabs
@@ -70,10 +69,7 @@ class _BottomTabsScreenState extends State<BottomTabsScreen> {
           ),
         ),
       ),
-      body: selectedPage == 0
-          ? MealsScreen(availableMeal: widget.availableMeal)
-          : const AboutCategoryScreen(),
-      // body: tabs[selectedPage]['view'] as Widget,
+      body: tabs[selectedPage]['view'] as Widget,
       bottomNavigationBar: BottomNavigationBar(
         onTap: handleChangePage,
         backgroundColor: Colors.grey.shade300,
