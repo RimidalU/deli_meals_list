@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 
 import '../../../features/about_category/views/views.dart';
+import '../../../features/categories/categories.dart';
 import '../../../features/meals/models/models.dart';
 import '../../../features/meals/view/view.dart';
 
 class BottomTabsScreen extends StatefulWidget {
-  const BottomTabsScreen({super.key, required this.availableMeal});
+  const BottomTabsScreen({
+    super.key,
+    required this.availableMeal,
+    required this.dummyCategories,
+  });
 
   final List<Meal> availableMeal;
+  final List<Category> dummyCategories;
 
   @override
   State<BottomTabsScreen> createState() => _BottomTabsScreenState();
@@ -29,7 +35,7 @@ class _BottomTabsScreenState extends State<BottomTabsScreen> {
       {
         'title': 'About',
         'icon': Icons.info,
-        'view': const AboutCategoryScreen(),
+        'view': AboutCategoryScreen(dummyCategories: widget.dummyCategories),
       },
     ];
 

@@ -107,8 +107,8 @@ class _MyAppState extends State<MyApp> {
             favoriteMeals: favoriteMeals, dummyCategories: dummyCategories),
         CategoriesScreen.routeName: (context) =>
             const CategoriesScreen(dummyCategories: dummyCategories),
-        MealsScreen.routeName: (context) =>
-            BottomTabsScreen(availableMeal: availableMeal),
+        MealsScreen.routeName: (context) => BottomTabsScreen(
+            availableMeal: availableMeal, dummyCategories: dummyCategories),
         MealDetailsScreen.routeName: (context) => MealDetailsScreen(
               dummyMeals: dummyMeals,
               isFavorites: isFavorites,
