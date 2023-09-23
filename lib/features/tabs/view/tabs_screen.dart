@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '/features/categories/categories.dart';
-import '/features/categories/models/models.dart';
 import '/features/favorites/favorites.dart';
 import '/features/main_drawer/main_drawer.dart';
 import '/features/meals/models/models.dart';
@@ -23,6 +22,7 @@ class TabsScreen extends StatelessWidget {
       initialIndex: 0,
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Theme.of(context).secondaryHeaderColor,
           title: const Text(
             'DeliMeals',
             style: TextStyle(
@@ -31,7 +31,11 @@ class TabsScreen extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          bottom: TabBar(tabs: [...getTabs()]),
+          bottom: TabBar(
+            tabs: [...getTabs()],
+            indicatorColor: Colors.blue,
+            labelColor: Colors.blue,
+          ),
         ),
         body: TabBarView(
           children: [

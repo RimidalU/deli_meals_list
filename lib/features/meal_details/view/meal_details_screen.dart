@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../features/meals/models/models.dart';
+import '/features/meals/models/models.dart';
 import '../widgets/widgets.dart';
 
 class MealDetailsScreen extends StatelessWidget {
@@ -25,6 +25,7 @@ class MealDetailsScreen extends StatelessWidget {
     final mediaQuery = MediaQuery.of(context);
 
     final appBar = AppBar(
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       title: Text(
         mealDetails.title,
         style: const TextStyle(

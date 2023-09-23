@@ -12,16 +12,20 @@ class AboutCategoryScreen extends StatelessWidget {
     final routeArgs =
         ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
     final String id = routeArgs['id'];
+    final Color color = routeArgs['color'];
     final categoryDetails =
         dummyCategories.firstWhere((element) => element.id == id);
 
-    return Center(
-        child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Text(
-        categoryDetails.description,
-        style: const TextStyle(fontSize: 18),
-      ),
-    ));
+    return Container(
+      color: color.withAlpha(60),
+      child: Center(
+          child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Text(
+          categoryDetails.description,
+          style: const TextStyle(fontSize: 18),
+        ),
+      )),
+    );
   }
 }

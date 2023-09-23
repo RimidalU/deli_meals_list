@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../features/about_category/views/views.dart';
-import '../../../features/categories/categories.dart';
-import '../../../features/meals/models/models.dart';
-import '../../../features/meals/view/view.dart';
+import '/features/about_category/views/views.dart';
+import '/features/categories/categories.dart';
+import '/features/meals/models/models.dart';
+import '/features/meals/view/view.dart';
 
 class BottomTabsScreen extends StatefulWidget {
   const BottomTabsScreen({
@@ -66,6 +66,7 @@ class _BottomTabsScreenState extends State<BottomTabsScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).secondaryHeaderColor,
         title: Text(
           routeArgs['title'] as String,
           style: const TextStyle(
