@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '/data/data.dart';
 import 'features/bottom_tabs/view/bottom_tabs_screen.dart';
 import 'features/categories/categories.dart';
-import 'features/favorites/favorites.dart';
 import 'features/filters/filters.dart';
 import 'features/meal_details/meal_details.dart';
 import 'features/meals/meals.dart';
@@ -30,6 +29,7 @@ class _MyAppState extends State<MyApp> {
   );
 
   List<Meal> availableMeal = dummyMeals;
+  List<Meal> favoriteMeals = [];
 
   void handleSetFilters(Filter filterData) {
     setState(
@@ -64,6 +64,20 @@ class _MyAppState extends State<MyApp> {
     ));
   }
 
+  void handleToggleFavorites(String mealId) {
+    final existingIndex = favoriteMeals.indexWhere((meal) => meal.id == mealId);
+
+    if (existingIndex >= 0) {
+      setState(() {
+        favoriteMeals.removeAt(existingIndex);
+      });
+    } else {
+      setState(() {
+        favoriteMeals.add(dummyMeals.firstWhere((meal) => meal.id == mealId));
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -85,13 +99,14 @@ class _MyAppState extends State<MyApp> {
           )),
       // initialRoute: CategoriesScreen.routeName,
       routes: {
-        '/': (context) => const TabsScreen(),
+        '/': (context) => TabsScreen(favoriteMeals: favoriteMeals),
         CategoriesScreen.routeName: (context) => const CategoriesScreen(),
         MealsScreen.routeName: (context) =>
             BottomTabsScreen(availableMeal: availableMeal),
-        MealDetailsScreen.routeName: (context) =>
-            MealDetailsScreen(availableMeal: availableMeal),
-        FavoritesScreen.routeName: (context) => const FavoritesScreen(),
+        MealDetailsScreen.routeName: (context) => MealDetailsScreen(
+              availableMeal: availableMeal,
+              handleToggleFavorites: handleToggleFavorites,
+            ),
         FiltersScreen.routeName: (context) => FiltersScreen(
               filters: filters,
               handleSetFilters: handleSetFilters,

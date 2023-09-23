@@ -4,9 +4,14 @@ import '../../../features/meals/models/models.dart';
 import '../widgets/widgets.dart';
 
 class MealDetailsScreen extends StatelessWidget {
-  const MealDetailsScreen({super.key, required this.availableMeal});
+  const MealDetailsScreen({
+    super.key,
+    required this.availableMeal,
+    required this.handleToggleFavorites,
+  });
 
   final List<Meal> availableMeal;
+  final Function handleToggleFavorites;
   static const routeName = '/meals-details';
 
   @override
@@ -92,6 +97,9 @@ class MealDetailsScreen extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () => handleToggleFavorites(id),
+          child: const Icon(Icons.favorite)),
     );
   }
 }
