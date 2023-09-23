@@ -6,12 +6,12 @@ import '../widgets/widgets.dart';
 class MealDetailsScreen extends StatelessWidget {
   const MealDetailsScreen({
     super.key,
-    required this.availableMeal,
+    required this.dummyMeals,
     required this.isFavorites,
     required this.handleToggleFavorites,
   });
 
-  final List<Meal> availableMeal;
+  final List<Meal> dummyMeals;
   final Function handleToggleFavorites;
   final Function isFavorites;
   static const routeName = '/meals-details';
@@ -21,7 +21,7 @@ class MealDetailsScreen extends StatelessWidget {
     final routeArgs =
         ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
     final String id = routeArgs['id'];
-    final mealDetails = availableMeal.firstWhere((element) => element.id == id);
+    final mealDetails = dummyMeals.firstWhere((element) => element.id == id);
     final mediaQuery = MediaQuery.of(context);
 
     final appBar = AppBar(

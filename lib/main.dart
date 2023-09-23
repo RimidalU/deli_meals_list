@@ -108,7 +108,7 @@ class _MyAppState extends State<MyApp> {
         MealsScreen.routeName: (context) =>
             BottomTabsScreen(availableMeal: availableMeal),
         MealDetailsScreen.routeName: (context) => MealDetailsScreen(
-              availableMeal: availableMeal,
+              dummyMeals: dummyMeals,
               isFavorites: isFavorites,
               handleToggleFavorites: handleToggleFavorites,
             ),
