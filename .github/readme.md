@@ -19,10 +19,10 @@
 [Contact](#contact)
 
 <p float="left">
-<img src="./assets/1.png" align="top"  width="25%" />
-<img src="./assets/2.png" align="top"  width="25%" />
-<img src="./assets/3.png" align="top"  width="25%" />
-<img src="./assets/4.png" align="top"  width="25%" />
+<img src="./assets/1.png" align="top"  width="24%" />
+<img src="./assets/2.png" align="top"  width="24%" />
+<img src="./assets/3.png" align="top"  width="24%" />
+<img src="./assets/4.png" align="top"  width="24%" />
 </p>
 
 ## Description
